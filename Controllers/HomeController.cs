@@ -37,18 +37,18 @@ namespace LaytonTemple.Controllers
         [HttpGet]
         public IActionResult Delete(int appointmentId)
         {
-            var task = Context.Responses.Single(x => x.AppointmentID == appointmentId);
+            var app = Context.Appointments.Single(x => x.AppointmentID == appointmentId);
 
-            return View(task);
+            return View(app);
         }
 
         [HttpPost]
         public IActionResult Delete(Appointment appointment)
         {
-            Context.Responses.Remove(appointment);
+            Context.Appointments.Remove(appointment);
             Context.SaveChanges();
 
-            return RedirectToAction("ViewAppointments"); // Redirects user back to view task page
+            return RedirectToAction("ViewAppointments"); // Redirects user back to view appointment page
 
         }
     }
