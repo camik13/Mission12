@@ -18,6 +18,6 @@ namespace LaytonTemple.Models
         public string Email { get; set; }
         public string Phone { get; set; }
         [Required]
-        public string AppointmentTime { get; }
+        public string AppointmentTime { get; set; }
     }
 }

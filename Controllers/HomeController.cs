@@ -62,6 +62,17 @@ namespace LaytonTemple.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult AppointmentSelection(string time)
+        {
+            //Project p = repo.Projects.FirstOrDefault(x => x.ProjectId == projectId);
+
+            //Appointment a = Context.Appointments.Add(x => x.AppointmentTime = time);
+            //(x => x.AppointmentTime = time);
+
+            return View();
+        }
+
 
         //Delete Appointment Action
         [HttpGet]
