@@ -23,6 +23,24 @@ namespace LaytonTemple.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult ViewAppointments()
+        {
+            // var app = context.Responses.ToList();
+            return View(); // TODO: load the app as a parameter
+        }
+
+        //Edit Appointment Action
+        public IActionResult Edit()
+        {
+            // TODO: return View Appointments
+            return View();
+        }
+        //Delete Appointment Action
+        public IActionResult Delete()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();
