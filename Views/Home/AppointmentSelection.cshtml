@@ -8,6 +8,7 @@
         <input type="hidden" value="@i:00" />
         <button type="submit" class="btn btn-primary btn-lg btn-block">@i:00</button>
     </form>
+    <br />
 }
 
 @for (int i = 1; i < 9; i++)
@@ -16,4 +17,11 @@
         <input type="hidden" value="@i:00" />
         <button type="submit" class="btn btn-primary btn-lg btn-block">@i:00</button>
     </form>
+    <br />
 }
+
+
+@*UPDATE IN THE CONTROLLER
+
+    on the post, it will receive a string. this string is the time.
+    in the controller, save this time as the appointment time in the database*@
