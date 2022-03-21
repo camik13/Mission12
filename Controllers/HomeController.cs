@@ -36,14 +36,22 @@ namespace LaytonTemple.Controllers
             // TODO: return View Appointments
             return View();
         }
+
         //Delete Appointment Action
         public IActionResult Delete()
         {
             return View();
         }
+
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult AppointmentSelection()
+        {
+            return View(); 
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
