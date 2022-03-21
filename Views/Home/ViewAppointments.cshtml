@@ -6,23 +6,34 @@
 <!-- TODO: bring in a list of made appointments from the model-->
 @model List<Appointment> 
 
-<table class="table table-bordered">
-    <thead>
-        <tr>Name of Group</tr>
-        <tr>Group Size</tr>
-        <tr>Phone</tr>
-        <tr>Email</tr>
+<table class="table table-bordered table-striped" style="background-color: #f2f7f2;">
+
+    <thead class="font-weight-bold">
+        <tr>
+            <tr>Name of Group</tr>
+            <tr>Group Size</tr>
+            <tr>Phone</tr>
+            <tr>Email</tr>
+       </tr>
     </thead>
+
     <tbody>
         <!-- For Loop creates the table based on number of records -->
-        @foreach (var x in Model)
-        {
-        <td>@x.Name</td>
-        <td>@x.Size</td>
-        <td>@x.Email</td>
-        <td>@x.Phone</td>
-        <td><a asp-controller="Home" asp-action="Edit">Edit</a></td>
-        <td><a asp-controller="Home" asp-action="Delet">Delete</a></td>
-    }
-        </tbody>
+        @foreach (var appointment in Model)
+         {
+            <tr>
+                <td>@appointment.Name</td>
+                <td>@appointment.Size</td>
+                <td>@appointment.Email</td>
+                <td>@appointment.Phone</td>
+
+                <td><a asp-controller="Home" asp-action="Edit" asp-route-appointmentid="@appointment.AppointmentID">Edit</a></td>
+                <td><a asp-controller="Home" asp-action="Delete" asp-route-appointmentid="@appointment.AppointmentID">Delete</a></td>
+
+            </tr>
+         }
+        
+     </tbody>
+
+
     </table>
