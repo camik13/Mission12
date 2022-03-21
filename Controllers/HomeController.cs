@@ -11,12 +11,7 @@ namespace LaytonTemple.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+        private LaytonTempleContext Context { get; set; }
 
         public IActionResult Index()
         {
@@ -36,20 +31,25 @@ namespace LaytonTemple.Controllers
             // TODO: return View Appointments
             return View();
         }
+
+
         //Delete Appointment Action
-        public IActionResult Delete()
+        [HttpGet]
+        public IActionResult Delete(int appointmentId)
         {
-            return View();
-        }
-        public IActionResult Privacy()
-        {
-            return View();
+            var task = Context.Responses.Single(x => x.AppointmentID == appointmentId);
+
+            return View(task);
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [HttpPost]
+        public IActionResult Delete(Appointment appointment)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            Context.Responses.Remove(appointment);
+            Context.SaveChanges();
+
+            return RedirectToAction("ViewAppointments"); // Redirects user back to view task page
+
         }
     }
 }
