@@ -18,6 +18,30 @@ namespace LaytonTemple.Controllers
             return View();
         }
 
+        //Add appointment
+        [HttpGet]
+        public IActionResult AddAppointment()
+        {
+            return View();
+        }
+
+        // ADD inputs to database
+        [HttpPost]
+        public IActionResult AddAppointment(Appointment app)
+        {
+            if (ModelState.IsValid)
+            {
+                Context.Add(app);
+                Context.SaveChanges();
+
+                return View("index");
+            }
+            else
+            {
+                return View("index");
+            }
+        }
+
         [HttpGet]
         public IActionResult ViewAppointments()
         {
@@ -32,6 +56,13 @@ namespace LaytonTemple.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult AppointmentSelection()
+        {
+            return View();
+        }
+
+
         //Delete Appointment Action
         [HttpGet]
         public IActionResult Delete(int appointmentId)
@@ -39,12 +70,6 @@ namespace LaytonTemple.Controllers
             var app = Context.Appointments.Single(x => x.AppointmentID == appointmentId);
 
             return View(app);
-        }
-
-        [HttpGet]
-        public IActionResult AppointmentSelection()
-        {
-            return View(); 
         }
 
         [HttpPost]
