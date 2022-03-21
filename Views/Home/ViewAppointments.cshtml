@@ -3,3 +3,26 @@
 }
 
 <!-- Make a table to display appoinments that have been made -->
+<!-- TODO: bring in a list of made appointments from the model-->
+@model List<Appointments> <!-- Appointments get made in the context file-->
+
+<table class="table table-bordered">
+    <thead>
+        <tr>Name of Group</tr>
+        <tr>Group Size</tr>
+        <tr>Phone</tr>
+        <tr>Email</tr>
+    </thead>
+    <tbody>
+        <!-- For Loop creates the table based on number of records -->
+        @foreach (var x in Model)
+        {
+        <td>@x.Name</td>
+        <td>@x.Size</td>
+        <td>@x.Email</td>
+        <td>@x.Phone</td>
+        <td><a asp-controller="Home" asp-action="Edit">Edit</a></td>
+        <td><a asp-controller="Home" asp-action="Delet">Delete</a></td>
+    }
+        </tbody>
+    </table>
