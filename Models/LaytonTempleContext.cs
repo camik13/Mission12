@@ -19,9 +19,24 @@ namespace LaytonTemple.Models
         }
 
         public DbSet<Appointment> Appointments { get; set; }
+        public DbSet<Time> Times { get; set; }
+
         protected override void OnModelCreating(ModelBuilder mb)
         {
-            mb.Entity<Appointment>().HasData(
+            mb.Entity<Time>().HasData(
+                    new Time { TimeID=1, TimeDescription='03/28/2022 08:00:00' }
+                );
+
+
+        //public int TimeID { get; set; }
+
+        //[Required]
+        //public DateTime TimeDescription { get; set; }
+
+        //[Required]
+        //public bool SlotFilled { get; set; }
+
+        mb.Entity<Appointment>().HasData(
                 new Appointment
                 {
                     AppointmentID = 1,

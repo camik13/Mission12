@@ -92,8 +92,8 @@ namespace LaytonTemple.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult AppointmentSelection(string time)
+        [HttpGet]
+        public IActionResult Test(string time)
         {
 
             //Context.Update(Appointment.AppointmentTime = time);

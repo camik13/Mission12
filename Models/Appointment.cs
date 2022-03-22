@@ -18,7 +18,10 @@ namespace LaytonTemple.Models
         [Required(ErrorMessage = "Please Enter an Email")]
         public string Email { get; set; }
         public string Phone { get; set; }
+
+        // MAYBE CHANGE THIS
         [Required]
         public string AppointmentTime { get; set; }
+       
     }
 }

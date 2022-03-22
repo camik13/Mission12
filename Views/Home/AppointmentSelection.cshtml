@@ -12,8 +12,8 @@
 
 @for (int i = 8; i < 13; i++)
 {
-    <form method="post" asp-action="AppointmentSelection">
-        <input type="hidden" value="@i:00" />
+    <form method="get" asp-action="test">
+        <input type="hidden" value="@i:00" name="time"/>
         <button type="submit" class="btn btn-primary btn-lg btn-block">@i:00 AM</button>
     </form>
     <br />
