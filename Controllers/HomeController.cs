@@ -98,7 +98,7 @@ namespace LaytonTemple.Controllers
 
 
         [HttpGet]
-        public IActionResult Test(string time)
+        public IActionResult Test(int time) // I THINK THIS SHOULD BE AN INT
         {
 
             //Context.Update(Appointment.AppointmentTime = time);
