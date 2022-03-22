@@ -35,6 +35,7 @@ namespace LaytonTemple.Controllers
             return View(app);
         }
 
+
         // ADD inputs to database
         [HttpPost]
         public IActionResult AddAppointment(Appointment app, string time)
