@@ -19,10 +19,10 @@ namespace LaytonTemple.Models
         public string Email { get; set; }
         public string Phone { get; set; }
 
-        // MAYBE CHANGE THIS
-        // datetime
-        [Required]
-        public DateTime AppointmentTime { get; set; }
+
+        //[Required]
+        public int TimeID { get; set; }
+        public Time Time { get; set; }
        
     }
 }

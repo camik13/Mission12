@@ -30,26 +30,28 @@ namespace LaytonTemple.Controllers
         public IActionResult AddAppointment(int timeID)
         {
             //return View(app);
-            return View();
+            return View(new AppViewModel
+            {
+                time = Context.Times.Single(t => t.TimeID == timeID)
+            });
 
         }
 
 
         // ADD inputs to database from add appointment form 
         [HttpPost]
-        public IActionResult AddAppointment(Appointment app)
+        public IActionResult AddAppointment(AppViewModel a, int timeID)
         {
             //app.AppointmentTime = time;
 
             if (ModelState.IsValid)
             {
-                Context.Add(app);
-
-                //Context.Add(app.AppointmentTime = timeID);
+                Context.Times.Single(t => t.TimeID == timeID).SlotFilled = true; 
+                Context.Appointments.Add(a.app);
 
                 Context.SaveChanges();
 
-                return View("Index", app); // MAYBE INCLUDE TIME IN HERE TOO ???
+                return View("Index"); 
             }
             else
             {
@@ -78,24 +80,18 @@ namespace LaytonTemple.Controllers
         }
 
 
-        [HttpGet]
-        public IActionResult Test(int timeID) // I THINK THIS SHOULD BE AN INT
-        {
+        //[HttpGet]
+        //public IActionResult Test(int timeID) // I THINK THIS SHOULD BE AN INT
+        //{
+        //    //ViewBag.Time = timeID;
+        //    //ViewBag.Time = Context.Times
+        //    //    .Where(x => x.TimeID == timeID);
 
-            //Context.Update(Appointment.AppointmentTime = time);
-            //Project p = repo.Projects.FirstOrDefault(x => x.ProjectId == projectId);
+        //    ViewBag.Time = Context.Times.Single(x => x.TimeID == timeID); 
 
-            //Appointment a = Context.Appointments.Add(x => x.AppointmentTime = time);
-            //(x => x.AppointmentTime = time);
-            //return RedirectToPage("/AddAppointment", time);
-
-            //Appointment app = new Appointment();
-            //app.AppointmentTime = time;
-            //Context.Add(app);
-
-            // should I pass in time right here???
-            return View("AddAppointment", timeID);
-        }
+        //    //return View("AddAppointment", timeID);
+        //    return View("AddAppointment", timeID);
+        //}
 
 
         // Go to Edit Appointment Form 

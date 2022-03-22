@@ -35,7 +35,7 @@
 
                             <tr>
                                 <td>
-                                    <form asp-controller="Home" asp-action="test" method="get">
+                                    <form asp-controller="Home" asp-action="AddAppointment" method="get">
                                         <button type="submit" class="btn btn-primary btn-lg btn-block">@t.TimeDescription.ToString("h:mm tt")</button>
                                         <input type="hidden" name="timeId" value="@t.TimeID" />
                                     </form>
@@ -79,7 +79,7 @@
                             <tr>
                                 
                                 <td>
-                                    <form asp-controller="Home" asp-action="test" method="get">
+                                    <form asp-controller="Home" asp-action="AddAppointment" method="get">
                                         <button type="submit" class="btn btn-primary btn-lg btn-block">@t.TimeDescription.ToString("h:mm tt")</button>
                                         <input type="hidden" name="timeId" value="@t.TimeID" />
                                     </form>

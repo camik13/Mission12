@@ -2,7 +2,7 @@
     ViewData["Title"] = "Add Appointment";
 }
 
-@model Appointment
+@model AppViewModel
 
 <div class="container">
     <h2>Choose an Appointment Time</h2>
@@ -13,30 +13,31 @@
     <div asp-validation-summary="All" class="text-danger"></div>
 
     <div class="form-group">
-        <label asp-for="Name">Name of Group</label>
-        <input asp-for="Name" class="form-control" />
+        <label asp-for="@Model.app.Name">Name of Group</label>
+        <input asp-for="@Model.app.Name" class="form-control" />
     </div>
 
     <div class="form-group">
-        <label asp-for="Size">Size of Group (1-15):</label>
-        <input asp-for="Size" class="form-control" />
+        <label asp-for="@Model.app.Size">Size of Group (1-15):</label>
+        <input asp-for="@Model.app.Size" class="form-control" />
     </div>
 
     <div class="form-group">
-        <label asp-for="Email">Email Address:</label>
-        <input asp-for="Email" class="form-control" />
+        <label asp-for="@Model.app.Email">Email Address:</label>
+        <input asp-for="@Model.app.Email" class="form-control" />
     </div>
 
     <div class="form-group">
-        <label asp-for="Phone">Phone Number (optional):</label>
-        <input asp-for="Phone" class="form-control" />
+        <label asp-for="@Model.app.Phone">Phone Number (optional):</label>
+        <input asp-for="@Model.app.Phone" class="form-control" />
     </div>
 
-    @*WE MIGHT NEED TO BRING IN THE TIME MODEL AS WELL AND SET THIS EQUAL TO THAT -- OR SET IT EQUAL TO THAT IN THE CONTROLLER*@
-    @*<div class="form-group">
-        <label asp-for="AppointmentTime">Appointment Time:</label>
-        <input asp-for="AppointmentTime" disabled value="@Model.AppointmentTime">
-    </div>*@
+    <div class="form-group">
+        <label asp-for="@Model.time.TimeDescription">Appointment Time:</label>
+        <input type="text" asp-for="@Model.time.TimeDescription" readonly value="@Model.time.TimeDescription.ToString("h:mm tt")">
+        <input type="hidden" asp-for="@Model.app.Time" value="@Model.time.TimeDescription" />
+        <input type="hidden" asp-for="@Model.app.Time" name="timeID" value="@Model.time.TimeID" />
+    </div>
 
     <br />
 

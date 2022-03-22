@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LaytonTemple.Migrations
 {
     [DbContext(typeof(LaytonTempleContext))]
-    [Migration("20220322172529_Initial")]
+    [Migration("20220322235048_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,9 +23,6 @@ namespace LaytonTemple.Migrations
                     b.Property<int>("AppointmentID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("AppointmentTime")
-                        .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -41,7 +38,12 @@ namespace LaytonTemple.Migrations
                     b.Property<int>("Size")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("TimeID")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("AppointmentID");
+
+                    b.HasIndex("TimeID");
 
                     b.ToTable("Appointments");
 
@@ -49,29 +51,29 @@ namespace LaytonTemple.Migrations
                         new
                         {
                             AppointmentID = 1,
-                            AppointmentTime = new DateTime(2022, 3, 28, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "Johnson@johnson.com",
                             Name = "Johnson",
                             Phone = "1231234567",
-                            Size = 3
+                            Size = 3,
+                            TimeID = 1
                         },
                         new
                         {
                             AppointmentID = 2,
-                            AppointmentTime = new DateTime(2022, 3, 28, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "Davidson@davidson.com",
                             Name = "Davidson",
                             Phone = "9879876543",
-                            Size = 4
+                            Size = 4,
+                            TimeID = 2
                         },
                         new
                         {
                             AppointmentID = 3,
-                            AppointmentTime = new DateTime(2022, 3, 28, 12, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "Jackson@jackson.com",
                             Name = "Jackson",
                             Phone = "5555555555",
-                            Size = 2
+                            Size = 2,
+                            TimeID = 3
                         });
                 });
 
@@ -638,6 +640,15 @@ namespace LaytonTemple.Migrations
                             SlotFilled = true,
                             TimeDescription = new DateTime(2022, 4, 3, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         });
+                });
+
+            modelBuilder.Entity("LaytonTemple.Models.Appointment", b =>
+                {
+                    b.HasOne("LaytonTemple.Models.Time", "Time")
+                        .WithMany()
+                        .HasForeignKey("TimeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
