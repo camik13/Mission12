@@ -24,7 +24,7 @@ namespace LaytonTemple.Controllers
             return View();
         }
 
-        //Add appointment
+        // Go to add appointment page
         [HttpGet]
         public IActionResult AddAppointment(Appointment app)
         {
@@ -36,7 +36,7 @@ namespace LaytonTemple.Controllers
         }
 
 
-        // ADD inputs to database
+        // ADD inputs to database from add appointment form 
         [HttpPost]
         public IActionResult AddAppointment(Appointment app, string time)
         {
@@ -68,7 +68,7 @@ namespace LaytonTemple.Controllers
         }
 
 
-        //Edit Appointment Action
+        // Go to Edit Appointment Form 
         [HttpGet]
         public IActionResult Edit(int appointmentid)
         {
@@ -76,6 +76,8 @@ namespace LaytonTemple.Controllers
             var appt = Context.Appointments.Single(x => x.AppointmentID == appointmentid);
             return RedirectToAction("AddAppointment", appt); // Redirects user back to the form
         }
+
+        // Submit Edit Appointment Form  
         [HttpPost]
         public IActionResult Edit(Appointment appt)
         {
@@ -93,6 +95,7 @@ namespace LaytonTemple.Controllers
 
             return View(times);
         }
+
 
         [HttpGet]
         public IActionResult Test(string time)
@@ -123,6 +126,7 @@ namespace LaytonTemple.Controllers
             return View(app);
         }
 
+        //Submit delete 
         [HttpPost]
         public IActionResult Delete(Appointment appointment)
         {
