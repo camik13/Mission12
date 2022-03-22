@@ -27,7 +27,6 @@ namespace LaytonTemple.Controllers
 
         // Go to add appointment page
         [HttpGet]
-        //public IActionResult AddAppointment(Appointment app)
         public IActionResult AddAppointment(int timeID)
         {
             //return View(app);
