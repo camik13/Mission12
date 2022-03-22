@@ -13,7 +13,7 @@ namespace LaytonTemple.Models
         public int AppointmentID { get; set; }
         [Required(ErrorMessage = "Please Enter a Group Name")]
         public string Name { get; set; }
-        [Required(ErrorMessage = "Please Enter the Amount of Guests")]
+        [Required(ErrorMessage = "Please Enter the Amount of Guests"), Range(1,15)]
         public int Size { get; set; }
         [Required(ErrorMessage = "Please Enter an Email")]
         public string Email { get; set; }
