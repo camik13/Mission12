@@ -129,5 +129,11 @@ namespace LaytonTemple.Controllers
             return RedirectToAction("ViewAppointments"); // Redirects user back to view appointment page
 
         }
+
+
+        //Edit Appointment Action
+        //[HttpGet]
+
+
     }
 }
