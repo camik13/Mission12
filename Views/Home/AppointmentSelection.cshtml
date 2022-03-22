@@ -2,31 +2,130 @@
     ViewData["Title"] = "Appointment Time Slots";
 }
 
-<h5 class="display-8 lh-1">Pick a Tour Time:</h5>
+@model List<Time>
+
+<h5 class="display-8 lh-1">Pick a Tour Date and Time:</h5>
 <br />
 
-@*We need to add date to the database*@ 
-<label>Date: </label>
+@*We need to add date to the database*@
+<!--<label>Date: </label>
 <input type="date" />
-<br /><br />
+<br />
+<br />-->
 
-@for (int i = 8; i < 13; i++)
-{
-    <form method="get" asp-action="test">
-        <input type="hidden" value="@i:00" name="time"/>
-        <button type="submit" class="btn btn-primary btn-lg btn-block">@i:00 AM</button>
-    </form>
-    <br />
-}
+@*MONDAY APPOINTMENTS*@
+<div id="accordion">
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    Monday, March 28, 2022
+                </button>
+            </h5>
+        </div>
 
-@for (int i = 1; i < 9; i++)
-{
-    <form method="post" asp-action="AppointmentSelection">
-        <input type="hidden" value="@i:00" />
-        <button type="submit" class="btn btn-primary btn-lg btn-block">@i:00 PM</button>
-    </form>
-    <br />
-}
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+                <table class="table table-bordered table-striped">
+
+                    <thead class="font-weight-bold">
+                        <tr>
+                            <td>Select A Time</td>
+                            
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (Time t in Model.Where(t => t.TimeDescription.Date.ToString("ddd") == "Mon"))
+                        {
+
+                            <tr>
+                                <td>
+                                    <form asp-controller="Home" asp-action="test" method="get">
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block">@t.TimeDescription.ToString("h:mm tt")</button>
+                                        <input type="hidden" name="timeId" value="@t.TimeID" />
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*TUESDAY APPOINTMENTS*@
+<div id="accordion">
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Tuesday, March 29, 2022
+                </button>
+            </h5>
+        </div>
+
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+                <table class="table table-bordered table-striped">
+
+                    <thead class="font-weight-bold">
+                        <tr>
+                            <td>Select A Time</td>
+                            
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (Time t in Model.Where(t => t.TimeDescription.Date.ToString("ddd") == "Tue"))
+                        {
+
+                            <tr>
+                                
+                                <td>
+                                    <form asp-controller="Home" asp-action="test" method="get">
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block">@t.TimeDescription.ToString("h:mm tt")</button>
+                                        <input type="hidden" name="timeId" value="@t.TimeID" />
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@*</tbody>
+
+
+    </table>*@
+
+
+
+@*@for (int i = 8; i < 13; i++)
+    {
+        <form method="get" asp-action="test">
+            <input type="hidden" value="@i:00" name="time" />
+            <button type="submit" class="btn btn-primary btn-lg btn-block">@i:00 AM</button>
+        </form>
+        <br />
+    }
+
+    @for (int i = 1; i < 9; i++)
+    {
+        <form method="post" asp-action="AppointmentSelection">
+            <input type="hidden" value="@i:00" />
+            <button type="submit" class="btn btn-primary btn-lg btn-block">@i:00 PM</button>
+        </form>
+        <br />
+    }*@
 
 
 @*UPDATE IN THE CONTROLLER

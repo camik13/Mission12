@@ -89,7 +89,9 @@ namespace LaytonTemple.Controllers
         [HttpGet]
         public IActionResult AppointmentSelection()
         {
-            return View();
+            var times = Context.Times.ToList();
+
+            return View(times);
         }
 
         [HttpGet]
