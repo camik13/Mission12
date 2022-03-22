@@ -40,7 +40,7 @@ namespace LaytonTemple.Controllers
         [HttpPost]
         public IActionResult AddAppointment(Appointment app, string time)
         {
-            app.AppointmentTime = time;
+            //app.AppointmentTime = time;
 
             if (ModelState.IsValid)
             {
@@ -103,11 +103,12 @@ namespace LaytonTemple.Controllers
             //(x => x.AppointmentTime = time);
             //return RedirectToPage("/AddAppointment", time);
 
-            Appointment app = new Appointment();
-            app.AppointmentTime = time;
+            //Appointment app = new Appointment();
+            //app.AppointmentTime = time;
             //Context.Add(app);
 
-            return View("AddAppointment", app);
+            // pass in app
+            return View("AddAppointment");
         }
 
 

@@ -20,8 +20,9 @@ namespace LaytonTemple.Models
         public string Phone { get; set; }
 
         // MAYBE CHANGE THIS
+        // datetime
         [Required]
-        public string AppointmentTime { get; set; }
+        public DateTime AppointmentTime { get; set; }
        
     }
 }

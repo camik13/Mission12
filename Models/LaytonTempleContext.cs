@@ -24,17 +24,21 @@ namespace LaytonTemple.Models
         protected override void OnModelCreating(ModelBuilder mb)
         {
             mb.Entity<Time>().HasData(
-                    new Time { TimeID=1, TimeDescription='03/28/2022 08:00:00' }
+                    new Time { TimeID = 1, TimeDescription = new DateTime(2022, 03, 28, 8, 00, 0), SlotFilled = false },
+                    new Time { TimeID = 2, TimeDescription = new DateTime(2022, 03, 28, 9, 00, 0), SlotFilled = false },
+                    new Time { TimeID = 3, TimeDescription = new DateTime(2022, 03, 28, 10, 00, 0), SlotFilled = false },
+                    new Time { TimeID = 4, TimeDescription = new DateTime(2022, 03, 28, 11, 00, 0), SlotFilled = false },
+                    new Time { TimeID = 5, TimeDescription = new DateTime(2022, 03, 28, 12, 00, 0), SlotFilled = false },
+                    new Time { TimeID = 6, TimeDescription = new DateTime(2022, 03, 28, 13, 00, 0), SlotFilled = false },
+                    new Time { TimeID = 7, TimeDescription = new DateTime(2022, 03, 28, 14, 00, 0), SlotFilled = false },
+                    new Time { TimeID = 8, TimeDescription = new DateTime(2022, 03, 28, 15, 00, 0), SlotFilled = false },
+                    new Time { TimeID = 9, TimeDescription = new DateTime(2022, 03, 28, 16, 00, 0), SlotFilled = false },
+                    new Time { TimeID = 10, TimeDescription = new DateTime(2022, 03, 28, 17, 00, 0), SlotFilled = false },
+                    new Time { TimeID = 11, TimeDescription = new DateTime(2022, 03, 28, 18, 00, 0), SlotFilled = false },
+                    new Time { TimeID = 12, TimeDescription = new DateTime(2022, 03, 28, 19, 00, 0), SlotFilled = false },
+                    new Time { TimeID = 13, TimeDescription = new DateTime(2022, 03, 28, 20, 00, 0), SlotFilled = false }
                 );
 
-
-        //public int TimeID { get; set; }
-
-        //[Required]
-        //public DateTime TimeDescription { get; set; }
-
-        //[Required]
-        //public bool SlotFilled { get; set; }
 
         mb.Entity<Appointment>().HasData(
                 new Appointment
@@ -44,7 +48,7 @@ namespace LaytonTemple.Models
                     Size = 3,
                     Email = "Johnson@johnson.com",
                     Phone = "1231234567",
-                    AppointmentTime = "1:00 PM",
+                    AppointmentTime = new DateTime(2022, 03, 28, 8, 00, 0),
                 },
                 new Appointment
                 {
@@ -53,7 +57,7 @@ namespace LaytonTemple.Models
                     Size = 4,
                     Email = "Davidson@davidson.com",
                     Phone = "9879876543",
-                    AppointmentTime = "11:00 AM",
+                    AppointmentTime = new DateTime(2022, 03, 28, 10, 00, 0),
                 },
                 new Appointment
                 {
@@ -62,7 +66,7 @@ namespace LaytonTemple.Models
                     Size = 2,
                     Email = "Jackson@jackson.com",
                     Phone = "5555555555",
-                    AppointmentTime = "5:00 PM",
+                    AppointmentTime = new DateTime(2022, 03, 28, 12, 00, 0),
                 });
         }
     }
