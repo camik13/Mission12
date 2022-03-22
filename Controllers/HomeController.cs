@@ -69,26 +69,6 @@ namespace LaytonTemple.Controllers
         }
 
 
-        // Go to Edit Appointment Form 
-        [HttpGet]
-        public IActionResult Edit(int appointmentid)
-        {
-            // TO DO: return View Appointments
-            var appt = Context.Appointments.Single(x => x.AppointmentID == appointmentid);
-            return RedirectToAction("AddAppointment", appt); // Redirects user back to the form
-        }
-
-        // Submit Edit Appointment Form  
-        [HttpPost]
-        public IActionResult Edit(Appointment appt)
-        {
-            Context.Update(appt);
-            Context.SaveChanges();
-
-            return RedirectToAction("ViewAppointments"); // Redirects user back to view appointment page
-        }
-
-
         [HttpGet]
         public IActionResult AppointmentSelection()
         {
@@ -115,6 +95,26 @@ namespace LaytonTemple.Controllers
 
             // should I pass in time right here???
             return View("AddAppointment", timeID);
+        }
+
+
+        // Go to Edit Appointment Form 
+        [HttpGet]
+        public IActionResult Edit(int appointmentid)
+        {
+            // TO DO: return View Appointments
+            var appt = Context.Appointments.Single(x => x.AppointmentID == appointmentid);
+            return RedirectToAction("AddAppointment", appt); // Redirects user back to the form
+        }
+
+        // Submit Edit Appointment Form  
+        [HttpPost]
+        public IActionResult Edit(Appointment appt)
+        {
+            Context.Update(appt);
+            Context.SaveChanges();
+
+            return RedirectToAction("ViewAppointments"); // Redirects user back to view appointment page
         }
 
 
