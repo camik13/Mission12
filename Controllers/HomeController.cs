@@ -22,14 +22,18 @@ namespace LaytonTemple.Controllers
         [HttpGet]
         public IActionResult AddAppointment(Appointment app)
         {
-            
-            return View();
+            //Project p = repo.Projects.FirstOrDefault(x => x.ProjectId == projectId);
+
+            //app = Context.Appointments.Where(x => x.AppointmentID == app.AppointmentID);
+
+            return View(app);
         }
 
         // ADD inputs to database
         [HttpPost]
         public IActionResult AddAppointment(Appointment app, string time)
         {
+            app.AppointmentTime = time;
 
             if (ModelState.IsValid)
             {
