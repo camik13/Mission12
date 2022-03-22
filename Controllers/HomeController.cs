@@ -49,12 +49,17 @@ namespace LaytonTemple.Controllers
             }
         }
 
+
+        // Page to view appointments in table format
         [HttpGet]
         public IActionResult ViewAppointments()
         {
-            // var app = context.Responses.ToList();
-            return View(); // TODO: load the app as a parameter
+            var appointments = Context.Appointments
+                //.OrderBy(x => x.Date) // we do not have a date item in our database yet
+                .ToList();
+            return View(appointments);
         }
+
 
         //Edit Appointment Action
         public IActionResult Edit()
