@@ -42,6 +42,35 @@ namespace LaytonTemple.Migrations
                     b.HasKey("AppointmentID");
 
                     b.ToTable("Appointments");
+
+                    b.HasData(
+                        new
+                        {
+                            AppointmentID = 1,
+                            AppointmentTime = "1:00 PM",
+                            Email = "Johnson@johnson.com",
+                            Name = "Johnson",
+                            Phone = "1231234567",
+                            Size = 3
+                        },
+                        new
+                        {
+                            AppointmentID = 2,
+                            AppointmentTime = "11:00 AM",
+                            Email = "Davidson@davidson.com",
+                            Name = "Davidson",
+                            Phone = "9879876543",
+                            Size = 4
+                        },
+                        new
+                        {
+                            AppointmentID = 3,
+                            AppointmentTime = "5:00 PM",
+                            Email = "Jackson@jackson.com",
+                            Name = "Jackson",
+                            Phone = "5555555555",
+                            Size = 2
+                        });
                 });
 #pragma warning restore 612, 618
         }
