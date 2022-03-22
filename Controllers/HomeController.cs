@@ -1,4 +1,5 @@
 ﻿using LaytonTemple.Models;
+using LaytonTemple.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -27,29 +28,26 @@ namespace LaytonTemple.Controllers
         // Go to add appointment page
         [HttpGet]
         //public IActionResult AddAppointment(Appointment app)
-        public IActionResult AddAppointment(int timeID, Appointment app)
+        public IActionResult AddAppointment(int timeID)
         {
-            //Project p = repo.Projects.FirstOrDefault(x => x.ProjectId == projectId);
-
-            //app = Context.Appointments.Where(x => x.AppointmentID == app.AppointmentID);
-
-            app.AppointmentID = timeID; 
-
             //return View(app);
             return View();
+
         }
 
 
         // ADD inputs to database from add appointment form 
         [HttpPost]
-        public IActionResult AddAppointment(Appointment app, int timeID)
+        public IActionResult AddAppointment(Appointment app)
         {
             //app.AppointmentTime = time;
 
             if (ModelState.IsValid)
             {
                 Context.Add(app);
-                //Context.Add(app.AppointmentTime = time);
+
+                //Context.Add(app.AppointmentTime = timeID);
+
                 Context.SaveChanges();
 
                 return View("Index", app); // MAYBE INCLUDE TIME IN HERE TOO ???
@@ -66,7 +64,7 @@ namespace LaytonTemple.Controllers
         public IActionResult ViewAppointments()
         {
             var appointments = Context.Appointments
-                //.OrderBy(x => x.Date) // we do not have a date item in our database yet
+                //.OrderBy(x => x.AppointmentTime) // we do not have a date item in our database yet
                 .ToList();
             return View(appointments);
         }
@@ -88,7 +86,7 @@ namespace LaytonTemple.Controllers
             Context.Update(appt);
             Context.SaveChanges();
 
-            return RedirectToAction("ViewAppointments", appt); // Redirects user back to view appointment page
+            return RedirectToAction("ViewAppointments"); // Redirects user back to view appointment page
         }
 
 
@@ -116,7 +114,7 @@ namespace LaytonTemple.Controllers
             //app.AppointmentTime = time;
             //Context.Add(app);
 
-            // should i pass in time right here???
+            // should I pass in time right here???
             return View("AddAppointment", timeID);
         }
 
