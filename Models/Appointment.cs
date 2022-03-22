@@ -9,6 +9,7 @@ namespace LaytonTemple.Models
     public class Appointment
     {
         [Key]
+        [Required]
         public int AppointmentID { get; set; }
         [Required]
         public string Name { get; set; }
