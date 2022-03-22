@@ -69,11 +69,22 @@ namespace LaytonTemple.Controllers
 
 
         //Edit Appointment Action
-        public IActionResult Edit()
+        [HttpGet]
+        public IActionResult Edit(int appointmentid)
         {
             // TO DO: return View Appointments
-            return View();
+            var appt = Context.Appointments.Single(x => x.AppointmentID == appointmentid);
+            return RedirectToAction("AddAppointment", appt); // Redirects user back to the form
         }
+        [HttpPost]
+        public IActionResult Edit(Appointment appt)
+        {
+            Context.Update(appt);
+            Context.SaveChanges();
+
+            return RedirectToAction("ViewAppointments", appt); // Redirects user back to view appointment page
+        }
+
 
         [HttpGet]
         public IActionResult AppointmentSelection()
