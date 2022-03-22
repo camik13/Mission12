@@ -11,11 +11,11 @@ namespace LaytonTemple.Models
         [Key]
         [Required]
         public int AppointmentID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please enter a Group Name")]
         public string Name { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please enter an Amount of Guests")]
         public int Size { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please enter an Email")]
         public string Email { get; set; }
         public string Phone { get; set; }
         [Required]
