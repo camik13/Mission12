@@ -4,7 +4,7 @@
 
 @for (int i = 8; i < 13; i++)
 {
-    <form method="post">
+    <form method="post" asp-action="AppointmentSelection">
         <input type="hidden" value="@i:00" />
         <button type="submit" class="btn btn-primary btn-lg btn-block">@i:00</button>
     </form>
@@ -13,7 +13,7 @@
 
 @for (int i = 1; i < 9; i++)
 {
-    <form method="post">
+    <form method="post" asp-action="AppointmentSelection">
         <input type="hidden" value="@i:00" />
         <button type="submit" class="btn btn-primary btn-lg btn-block">@i:00</button>
     </form>

@@ -20,18 +20,21 @@ namespace LaytonTemple.Controllers
 
         //Add appointment
         [HttpGet]
-        public IActionResult AddAppointment()
+        public IActionResult AddAppointment(Appointment app)
         {
+            
             return View();
         }
 
         // ADD inputs to database
         [HttpPost]
-        public IActionResult AddAppointment(Appointment app)
+        public IActionResult AddAppointment(Appointment app, string time)
         {
+
             if (ModelState.IsValid)
             {
                 Context.Add(app);
+                //Context.Add(app.AppointmentTime = time);
                 Context.SaveChanges();
 
                 return View("index");
@@ -65,12 +68,19 @@ namespace LaytonTemple.Controllers
         [HttpPost]
         public IActionResult AppointmentSelection(string time)
         {
+
+            //Context.Update(Appointment.AppointmentTime = time);
             //Project p = repo.Projects.FirstOrDefault(x => x.ProjectId == projectId);
 
             //Appointment a = Context.Appointments.Add(x => x.AppointmentTime = time);
             //(x => x.AppointmentTime = time);
+            //return RedirectToPage("/AddAppointment", time);
 
-            return View();
+            Appointment app = new Appointment();
+            app.AppointmentTime = time;
+            //Context.Add(app);
+
+            return View("AddAppointment", app);
         }
 
 
