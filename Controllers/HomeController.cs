@@ -13,6 +13,12 @@ namespace LaytonTemple.Controllers
     {
         private LaytonTempleContext Context { get; set; }
 
+        //Constructor
+        public HomeController(LaytonTempleContext someName)
+        {
+            Context = someName;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -41,11 +47,11 @@ namespace LaytonTemple.Controllers
                 //Context.Add(app.AppointmentTime = time);
                 Context.SaveChanges();
 
-                return View("index");
+                return View("Index", app); // MAYBE INCLUDE TIME IN HERE TOO ???
             }
             else
             {
-                return View("index");
+                return View("Index");
             }
         }
 
@@ -64,7 +70,7 @@ namespace LaytonTemple.Controllers
         //Edit Appointment Action
         public IActionResult Edit()
         {
-            // TODO: return View Appointments
+            // TO DO: return View Appointments
             return View();
         }
 
