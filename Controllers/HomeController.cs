@@ -26,19 +26,23 @@ namespace LaytonTemple.Controllers
 
         // Go to add appointment page
         [HttpGet]
-        public IActionResult AddAppointment(Appointment app)
+        //public IActionResult AddAppointment(Appointment app)
+        public IActionResult AddAppointment(int timeID, Appointment app)
         {
             //Project p = repo.Projects.FirstOrDefault(x => x.ProjectId == projectId);
 
             //app = Context.Appointments.Where(x => x.AppointmentID == app.AppointmentID);
 
-            return View(app);
+            app.AppointmentID = timeID; 
+
+            //return View(app);
+            return View();
         }
 
 
         // ADD inputs to database from add appointment form 
         [HttpPost]
-        public IActionResult AddAppointment(Appointment app, string time)
+        public IActionResult AddAppointment(Appointment app, int timeID)
         {
             //app.AppointmentTime = time;
 
@@ -98,7 +102,7 @@ namespace LaytonTemple.Controllers
 
 
         [HttpGet]
-        public IActionResult Test(int time) // I THINK THIS SHOULD BE AN INT
+        public IActionResult Test(int timeID) // I THINK THIS SHOULD BE AN INT
         {
 
             //Context.Update(Appointment.AppointmentTime = time);
@@ -112,8 +116,8 @@ namespace LaytonTemple.Controllers
             //app.AppointmentTime = time;
             //Context.Add(app);
 
-            // pass in app
-            return View("AddAppointment");
+            // should i pass in time right here???
+            return View("AddAppointment", timeID);
         }
 
 
