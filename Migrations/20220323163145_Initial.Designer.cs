@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LaytonTemple.Migrations
 {
     [DbContext(typeof(LaytonTempleContext))]
-    [Migration("20220323154018_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20220323163145_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -55,7 +55,7 @@ namespace LaytonTemple.Migrations
                             Name = "Johnson",
                             Phone = "1231234567",
                             Size = 3,
-                            TimeID = 0
+                            TimeID = 1
                         },
                         new
                         {
@@ -64,7 +64,7 @@ namespace LaytonTemple.Migrations
                             Name = "Davidson",
                             Phone = "9879876543",
                             Size = 4,
-                            TimeID = 0
+                            TimeID = 2
                         },
                         new
                         {
@@ -73,7 +73,7 @@ namespace LaytonTemple.Migrations
                             Name = "Jackson",
                             Phone = "5555555555",
                             Size = 2,
-                            TimeID = 0
+                            TimeID = 3
                         });
                 });
 

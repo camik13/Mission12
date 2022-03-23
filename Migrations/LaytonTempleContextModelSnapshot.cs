@@ -53,7 +53,7 @@ namespace LaytonTemple.Migrations
                             Name = "Johnson",
                             Phone = "1231234567",
                             Size = 3,
-                            TimeID = 0
+                            TimeID = 1
                         },
                         new
                         {
@@ -62,7 +62,7 @@ namespace LaytonTemple.Migrations
                             Name = "Davidson",
                             Phone = "9879876543",
                             Size = 4,
-                            TimeID = 0
+                            TimeID = 2
                         },
                         new
                         {
@@ -71,7 +71,7 @@ namespace LaytonTemple.Migrations
                             Name = "Jackson",
                             Phone = "5555555555",
                             Size = 2,
-                            TimeID = 0
+                            TimeID = 3
                         });
                 });
 
