@@ -42,7 +42,6 @@ namespace LaytonTemple.Controllers
         [HttpPost]
         public IActionResult AddAppointment(AppViewModel a, int timeID)
         {
-            
 
             if (ModelState.IsValid)
             {

@@ -35,9 +35,10 @@
     <div class="form-group">
         <label asp-for="@Model.time.TimeDescription">Appointment Time:</label>
         <input type="text" asp-for="@Model.time.TimeDescription" readonly value="@Model.time.TimeDescription.ToString("h:mm tt")">
-        <input type="hidden" asp-for="@Model.app.Time" value="@Model.time.TimeDescription" />
-        <input type="hidden" asp-for="@Model.app.TimeID" name="timeID" value="@Model.time.TimeID" />
     </div>
+
+    <input type="hidden" asp-for="@Model.app.Time" value="@Model.time.TimeDescription" />
+    <input type="hidden" asp-for="@Model.app.TimeID" name="timeID" value="@Model.time.TimeID" />
 
     <br />
 

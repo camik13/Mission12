@@ -35,9 +35,9 @@
 
                             <tr>
                                 <td>
-                                    <form asp-controller="Home" asp-action="AddAppointment" method="get">
+                                    <form asp-controller="Home" asp-action="AddAppointment" method="post">
                                         <button type="submit" class="btn @(t.SlotFilled == false ? "btn-primary" : "btn-secondary") btn-lg btn-block" @(t.SlotFilled == false ? "" : "disabled")>@t.TimeDescription.ToString("h:mm tt")</button>
-                                        <input type="hidden" name="timeId" value="@t.TimeID" />
+                                        <input type="hidden" name="timeId" asp-for="@t.TimeID" value="@t.TimeID" />
                                     </form>
                                 </td>
                             </tr>
