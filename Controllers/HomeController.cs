@@ -100,17 +100,24 @@ namespace LaytonTemple.Controllers
         {
             // TO DO: return View Appointments
             var appt = Context.Appointments.Single(x => x.AppointmentID == appointmentid);
-            return RedirectToAction("AddAppointment", appt); // Redirects user back to the form
+            return View("AddAppointment", appt); // Redirects user back to the form
         }
 
         // Submit Edit Appointment Form  
         [HttpPost]
         public IActionResult Edit(Appointment appt)
         {
-            Context.Update(appt);
-            Context.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                Context.Update(appt);
+                Context.SaveChanges();
+                return Redirect("ViewAppointments"); // Redirects user back to view appointment page
+            }
+            else //if invalid
+            {
+                return View("ViewAppointments");
+            }
 
-            return RedirectToAction("ViewAppointments"); // Redirects user back to view appointment page
         }
 
 
