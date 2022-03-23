@@ -27,12 +27,12 @@ namespace LaytonTemple.Controllers
 
         // Go to add appointment page
         [HttpGet]
-        public IActionResult AddAppointment(int timeID)
+        public IActionResult AddAppointment(int timeId)
         {
             //return View(app);
             return View(new AppViewModel
             {
-                time = Context.Times.Single(t => t.TimeID == timeID)
+                time = Context.Times.Single(t => t.TimeID == timeId)
             });
 
         }
@@ -40,17 +40,24 @@ namespace LaytonTemple.Controllers
 
         // ADD inputs to database from add appointment form 
         [HttpPost]
-        public IActionResult AddAppointment(AppViewModel a, int timeID)
+        public IActionResult AddAppointment(AppViewModel a, int timeId)
         {
+            a.app.TimeID = timeId;
+            a.time.TimeID = timeId;
+            //a.app.Time = new Time { TimeID = timeId, TimeDescription = DateTime.Now, SlotFilled = false };
+
+            var errors = ModelState.Select(x => x.Value.Errors)
+                           .Where(y => y.Count > 0)
+                           .ToList();
 
             if (ModelState.IsValid)
             {
-                Context.Times.Single(t => t.TimeID == timeID).SlotFilled = true;
+                Context.Times.Single(t => t.TimeID == timeId).SlotFilled = true;
                 Context.Appointments.Add(a.app);
 
                 Context.SaveChanges(); // error here
 
-                return View("Index"); 
+                return View("Index");
             }
             else
             {
