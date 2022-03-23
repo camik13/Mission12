@@ -22,7 +22,7 @@ namespace LaytonTemple.Models
 
         //[Required]
         public int TimeID { get; set; }
-        public Time Time { get; set; }
+        //public Time Time { get; set; }
        
     }
 }

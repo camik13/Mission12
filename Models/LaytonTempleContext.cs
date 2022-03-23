@@ -140,7 +140,7 @@ namespace LaytonTemple.Models
                     Size = 3,
                     Email = "Johnson@johnson.com",
                     Phone = "1231234567",
-                    TimeID = 1,
+                    // TimeID = 1,
                 },
                 new Appointment
                 {
@@ -149,7 +149,7 @@ namespace LaytonTemple.Models
                     Size = 4,
                     Email = "Davidson@davidson.com",
                     Phone = "9879876543",
-                    TimeID = 2,
+                    // TimeID = 2,
                 },
                 new Appointment
                 {
@@ -158,7 +158,7 @@ namespace LaytonTemple.Models
                     Size = 2,
                     Email = "Jackson@jackson.com",
                     Phone = "5555555555",
-                    TimeID = 3,
+                    // TimeID = 3,
                 });
         }
     }

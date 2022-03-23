@@ -8,6 +8,22 @@ namespace LaytonTemple.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Appointments",
+                columns: table => new
+                {
+                    AppointmentID = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(nullable: false),
+                    Size = table.Column<int>(nullable: false),
+                    Email = table.Column<string>(nullable: false),
+                    Phone = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Appointments", x => x.AppointmentID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Times",
                 columns: table => new
                 {
@@ -21,33 +37,20 @@ namespace LaytonTemple.Migrations
                     table.PrimaryKey("PK_Times", x => x.TimeID);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Appointments",
-                columns: table => new
-                {
-                    AppointmentID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(nullable: false),
-                    Size = table.Column<int>(nullable: false),
-                    Email = table.Column<string>(nullable: false),
-                    Phone = table.Column<string>(nullable: true),
-                    TimeID = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Appointments", x => x.AppointmentID);
-                    table.ForeignKey(
-                        name: "FK_Appointments_Times_TimeID",
-                        column: x => x.TimeID,
-                        principalTable: "Times",
-                        principalColumn: "TimeID",
-                        onDelete: ReferentialAction.Cascade);
-                });
+            migrationBuilder.InsertData(
+                table: "Appointments",
+                columns: new[] { "AppointmentID", "Email", "Name", "Phone", "Size" },
+                values: new object[] { 1, "Johnson@johnson.com", "Johnson", "1231234567", 3 });
 
             migrationBuilder.InsertData(
-                table: "Times",
-                columns: new[] { "TimeID", "SlotFilled", "TimeDescription" },
-                values: new object[] { 1, true, new DateTime(2022, 3, 28, 8, 0, 0, 0, DateTimeKind.Unspecified) });
+                table: "Appointments",
+                columns: new[] { "AppointmentID", "Email", "Name", "Phone", "Size" },
+                values: new object[] { 2, "Davidson@davidson.com", "Davidson", "9879876543", 4 });
+
+            migrationBuilder.InsertData(
+                table: "Appointments",
+                columns: new[] { "AppointmentID", "Email", "Name", "Phone", "Size" },
+                values: new object[] { 3, "Jackson@jackson.com", "Jackson", "5555555555", 2 });
 
             migrationBuilder.InsertData(
                 table: "Times",
@@ -97,12 +100,12 @@ namespace LaytonTemple.Migrations
             migrationBuilder.InsertData(
                 table: "Times",
                 columns: new[] { "TimeID", "SlotFilled", "TimeDescription" },
-                values: new object[] { 57, false, new DateTime(2022, 4, 1, 12, 0, 0, 0, DateTimeKind.Unspecified) });
+                values: new object[] { 56, false, new DateTime(2022, 4, 1, 11, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.InsertData(
                 table: "Times",
                 columns: new[] { "TimeID", "SlotFilled", "TimeDescription" },
-                values: new object[] { 56, false, new DateTime(2022, 4, 1, 11, 0, 0, 0, DateTimeKind.Unspecified) });
+                values: new object[] { 67, false, new DateTime(2022, 4, 2, 9, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.InsertData(
                 table: "Times",
@@ -147,17 +150,17 @@ namespace LaytonTemple.Migrations
             migrationBuilder.InsertData(
                 table: "Times",
                 columns: new[] { "TimeID", "SlotFilled", "TimeDescription" },
-                values: new object[] { 67, false, new DateTime(2022, 4, 2, 9, 0, 0, 0, DateTimeKind.Unspecified) });
-
-            migrationBuilder.InsertData(
-                table: "Times",
-                columns: new[] { "TimeID", "SlotFilled", "TimeDescription" },
-                values: new object[] { 47, false, new DateTime(2022, 3, 31, 15, 0, 0, 0, DateTimeKind.Unspecified) });
+                values: new object[] { 57, false, new DateTime(2022, 4, 1, 12, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.InsertData(
                 table: "Times",
                 columns: new[] { "TimeID", "SlotFilled", "TimeDescription" },
                 values: new object[] { 68, false, new DateTime(2022, 4, 2, 10, 0, 0, 0, DateTimeKind.Unspecified) });
+
+            migrationBuilder.InsertData(
+                table: "Times",
+                columns: new[] { "TimeID", "SlotFilled", "TimeDescription" },
+                values: new object[] { 69, false, new DateTime(2022, 4, 2, 11, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.InsertData(
                 table: "Times",
@@ -262,12 +265,7 @@ namespace LaytonTemple.Migrations
             migrationBuilder.InsertData(
                 table: "Times",
                 columns: new[] { "TimeID", "SlotFilled", "TimeDescription" },
-                values: new object[] { 69, false, new DateTime(2022, 4, 2, 11, 0, 0, 0, DateTimeKind.Unspecified) });
-
-            migrationBuilder.InsertData(
-                table: "Times",
-                columns: new[] { "TimeID", "SlotFilled", "TimeDescription" },
-                values: new object[] { 90, true, new DateTime(2022, 4, 3, 19, 0, 0, 0, DateTimeKind.Unspecified) });
+                values: new object[] { 47, false, new DateTime(2022, 3, 31, 15, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.InsertData(
                 table: "Times",
@@ -282,7 +280,7 @@ namespace LaytonTemple.Migrations
             migrationBuilder.InsertData(
                 table: "Times",
                 columns: new[] { "TimeID", "SlotFilled", "TimeDescription" },
-                values: new object[] { 20, false, new DateTime(2022, 3, 29, 14, 0, 0, 0, DateTimeKind.Unspecified) });
+                values: new object[] { 90, true, new DateTime(2022, 4, 3, 19, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.InsertData(
                 table: "Times",
@@ -377,12 +375,17 @@ namespace LaytonTemple.Migrations
             migrationBuilder.InsertData(
                 table: "Times",
                 columns: new[] { "TimeID", "SlotFilled", "TimeDescription" },
-                values: new object[] { 21, false, new DateTime(2022, 3, 29, 15, 0, 0, 0, DateTimeKind.Unspecified) });
+                values: new object[] { 1, true, new DateTime(2022, 3, 28, 8, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.InsertData(
                 table: "Times",
                 columns: new[] { "TimeID", "SlotFilled", "TimeDescription" },
-                values: new object[] { 45, false, new DateTime(2022, 3, 31, 13, 0, 0, 0, DateTimeKind.Unspecified) });
+                values: new object[] { 20, false, new DateTime(2022, 3, 29, 14, 0, 0, 0, DateTimeKind.Unspecified) });
+
+            migrationBuilder.InsertData(
+                table: "Times",
+                columns: new[] { "TimeID", "SlotFilled", "TimeDescription" },
+                values: new object[] { 21, false, new DateTime(2022, 3, 29, 15, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.InsertData(
                 table: "Times",
@@ -392,7 +395,7 @@ namespace LaytonTemple.Migrations
             migrationBuilder.InsertData(
                 table: "Times",
                 columns: new[] { "TimeID", "SlotFilled", "TimeDescription" },
-                values: new object[] { 24, false, new DateTime(2022, 3, 29, 18, 0, 0, 0, DateTimeKind.Unspecified) });
+                values: new object[] { 23, false, new DateTime(2022, 3, 29, 17, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.InsertData(
                 table: "Times",
@@ -442,12 +445,12 @@ namespace LaytonTemple.Migrations
             migrationBuilder.InsertData(
                 table: "Times",
                 columns: new[] { "TimeID", "SlotFilled", "TimeDescription" },
-                values: new object[] { 34, false, new DateTime(2022, 3, 30, 15, 0, 0, 0, DateTimeKind.Unspecified) });
+                values: new object[] { 45, false, new DateTime(2022, 3, 31, 13, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.InsertData(
                 table: "Times",
                 columns: new[] { "TimeID", "SlotFilled", "TimeDescription" },
-                values: new object[] { 33, false, new DateTime(2022, 3, 30, 14, 0, 0, 0, DateTimeKind.Unspecified) });
+                values: new object[] { 34, false, new DateTime(2022, 3, 30, 15, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.InsertData(
                 table: "Times",
@@ -492,32 +495,17 @@ namespace LaytonTemple.Migrations
             migrationBuilder.InsertData(
                 table: "Times",
                 columns: new[] { "TimeID", "SlotFilled", "TimeDescription" },
-                values: new object[] { 23, false, new DateTime(2022, 3, 29, 17, 0, 0, 0, DateTimeKind.Unspecified) });
+                values: new object[] { 24, false, new DateTime(2022, 3, 29, 18, 0, 0, 0, DateTimeKind.Unspecified) });
+
+            migrationBuilder.InsertData(
+                table: "Times",
+                columns: new[] { "TimeID", "SlotFilled", "TimeDescription" },
+                values: new object[] { 33, false, new DateTime(2022, 3, 30, 14, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.InsertData(
                 table: "Times",
                 columns: new[] { "TimeID", "SlotFilled", "TimeDescription" },
                 values: new object[] { 91, true, new DateTime(2022, 4, 3, 20, 0, 0, 0, DateTimeKind.Unspecified) });
-
-            migrationBuilder.InsertData(
-                table: "Appointments",
-                columns: new[] { "AppointmentID", "Email", "Name", "Phone", "Size", "TimeID" },
-                values: new object[] { 1, "Johnson@johnson.com", "Johnson", "1231234567", 3, 1 });
-
-            migrationBuilder.InsertData(
-                table: "Appointments",
-                columns: new[] { "AppointmentID", "Email", "Name", "Phone", "Size", "TimeID" },
-                values: new object[] { 2, "Davidson@davidson.com", "Davidson", "9879876543", 4, 2 });
-
-            migrationBuilder.InsertData(
-                table: "Appointments",
-                columns: new[] { "AppointmentID", "Email", "Name", "Phone", "Size", "TimeID" },
-                values: new object[] { 3, "Jackson@jackson.com", "Jackson", "5555555555", 2, 3 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Appointments_TimeID",
-                table: "Appointments",
-                column: "TimeID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

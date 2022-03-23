@@ -43,9 +43,10 @@ namespace LaytonTemple.Controllers
         public IActionResult AddAppointment(AppViewModel a, int timeID)
         {
             
+
             if (ModelState.IsValid)
             {
-                Context.Times.Single(t => t.TimeID == timeID).SlotFilled = true; 
+                Context.Times.Single(t => t.TimeID == timeID).SlotFilled = true;
                 Context.Appointments.Add(a.app);
 
                 Context.SaveChanges(); // error here

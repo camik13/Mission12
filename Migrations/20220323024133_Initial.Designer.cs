@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LaytonTemple.Migrations
 {
     [DbContext(typeof(LaytonTempleContext))]
-    [Migration("20220323013542_Initial")]
+    [Migration("20220323024133_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,12 +38,7 @@ namespace LaytonTemple.Migrations
                     b.Property<int>("Size")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("TimeID")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("AppointmentID");
-
-                    b.HasIndex("TimeID");
 
                     b.ToTable("Appointments");
 
@@ -54,8 +49,7 @@ namespace LaytonTemple.Migrations
                             Email = "Johnson@johnson.com",
                             Name = "Johnson",
                             Phone = "1231234567",
-                            Size = 3,
-                            TimeID = 1
+                            Size = 3
                         },
                         new
                         {
@@ -63,8 +57,7 @@ namespace LaytonTemple.Migrations
                             Email = "Davidson@davidson.com",
                             Name = "Davidson",
                             Phone = "9879876543",
-                            Size = 4,
-                            TimeID = 2
+                            Size = 4
                         },
                         new
                         {
@@ -72,8 +65,7 @@ namespace LaytonTemple.Migrations
                             Email = "Jackson@jackson.com",
                             Name = "Jackson",
                             Phone = "5555555555",
-                            Size = 2,
-                            TimeID = 3
+                            Size = 2
                         });
                 });
 
@@ -640,15 +632,6 @@ namespace LaytonTemple.Migrations
                             SlotFilled = true,
                             TimeDescription = new DateTime(2022, 4, 3, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         });
-                });
-
-            modelBuilder.Entity("LaytonTemple.Models.Appointment", b =>
-                {
-                    b.HasOne("LaytonTemple.Models.Time", "Time")
-                        .WithMany()
-                        .HasForeignKey("TimeID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
