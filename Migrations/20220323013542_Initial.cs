@@ -31,7 +31,7 @@ namespace LaytonTemple.Migrations
                     Size = table.Column<int>(nullable: false),
                     Email = table.Column<string>(nullable: false),
                     Phone = table.Column<string>(nullable: true),
-                    TimeID = table.Column<int>(nullable: true)
+                    TimeID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -47,7 +47,7 @@ namespace LaytonTemple.Migrations
             migrationBuilder.InsertData(
                 table: "Times",
                 columns: new[] { "TimeID", "SlotFilled", "TimeDescription" },
-                values: new object[] { 1, false, new DateTime(2022, 3, 28, 8, 0, 0, 0, DateTimeKind.Unspecified) });
+                values: new object[] { 1, true, new DateTime(2022, 3, 28, 8, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.InsertData(
                 table: "Times",
@@ -367,12 +367,12 @@ namespace LaytonTemple.Migrations
             migrationBuilder.InsertData(
                 table: "Times",
                 columns: new[] { "TimeID", "SlotFilled", "TimeDescription" },
-                values: new object[] { 3, false, new DateTime(2022, 3, 28, 10, 0, 0, 0, DateTimeKind.Unspecified) });
+                values: new object[] { 3, true, new DateTime(2022, 3, 28, 10, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.InsertData(
                 table: "Times",
                 columns: new[] { "TimeID", "SlotFilled", "TimeDescription" },
-                values: new object[] { 2, false, new DateTime(2022, 3, 28, 9, 0, 0, 0, DateTimeKind.Unspecified) });
+                values: new object[] { 2, true, new DateTime(2022, 3, 28, 9, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.InsertData(
                 table: "Times",

@@ -25,7 +25,7 @@
                     <thead class="font-weight-bold">
                         <tr>
                             <td>Select A Time</td>
-                            
+
                         </tr>
                     </thead>
 
@@ -36,7 +36,7 @@
                             <tr>
                                 <td>
                                     <form asp-controller="Home" asp-action="AddAppointment" method="get">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block">@t.TimeDescription.ToString("h:mm tt")</button>
+                                        <button type="submit" class="btn @(t.SlotFilled == false ? "btn-primary" : "btn-secondary") btn-lg btn-block" @(t.SlotFilled == false ? "" : "disabled")>@t.TimeDescription.ToString("h:mm tt")</button>
                                         <input type="hidden" name="timeId" value="@t.TimeID" />
                                     </form>
                                 </td>
@@ -68,7 +68,7 @@
                     <thead class="font-weight-bold">
                         <tr>
                             <td>Select A Time</td>
-                            
+
                         </tr>
                     </thead>
 
@@ -77,10 +77,230 @@
                         {
 
                             <tr>
-                                
+
                                 <td>
                                     <form asp-controller="Home" asp-action="AddAppointment" method="get">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block">@t.TimeDescription.ToString("h:mm tt")</button>
+                                        <button type="submit" class="btn @(t.SlotFilled == false ? "btn-primary" : "btn-secondary") btn-lg btn-block" @(t.SlotFilled == false ? "" : "disabled")>@t.TimeDescription.ToString("h:mm tt")</button>
+                                        <input type="hidden" name="timeId" value="@t.TimeID" />
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*WEDNESDAY APPOINTMENTS*@
+<div id="accordion">
+    <div class="card">
+        <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Wednesday March 30, 2022
+                </button>
+            </h5>
+        </div>
+
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div class="card-body">
+                <table class="table table-bordered table-striped">
+
+                    <thead class="font-weight-bold">
+                        <tr>
+                            <td>Select A Time</td>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (Time t in Model.Where(t => t.TimeDescription.Date.ToString("ddd") == "Wed"))
+                        {
+
+                            <tr>
+
+                                <td>
+                                    <form asp-controller="Home" asp-action="AddAppointment" method="get">
+                                        <button type="submit" class="btn @(t.SlotFilled == false ? "btn-primary" : "btn-secondary") btn-lg btn-block" @(t.SlotFilled == false ? "" : "disabled")>@t.TimeDescription.ToString("h:mm tt")</button>
+                                        <input type="hidden" name="timeId" value="@t.TimeID" />
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*THURSDAY APPOINTMENTS*@
+<div id="accordion">
+    <div class="card">
+        <div class="card-header" id="headingFour">
+            <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    Thursday March 31, 2022
+                </button>
+            </h5>
+        </div>
+
+        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+            <div class="card-body">
+                <table class="table table-bordered table-striped">
+
+                    <thead class="font-weight-bold">
+                        <tr>
+                            <td>Select A Time</td>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (Time t in Model.Where(t => t.TimeDescription.Date.ToString("ddd") == "Thu"))
+                        {
+
+                            <tr>
+
+                                <td>
+                                    <form asp-controller="Home" asp-action="AddAppointment" method="get">
+                                        <button type="submit" class="btn @(t.SlotFilled == false ? "btn-primary" : "btn-secondary") btn-lg btn-block" @(t.SlotFilled == false ? "" : "disabled")>@t.TimeDescription.ToString("h:mm tt")</button>
+                                        <input type="hidden" name="timeId" value="@t.TimeID" />
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*FRIDAY APPOINTMENTS*@
+<div id="accordion">
+    <div class="card">
+        <div class="card-header" id="headingFive">
+            <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                    Friday April 01, 2022
+                </button>
+            </h5>
+        </div>
+
+        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+            <div class="card-body">
+                <table class="table table-bordered table-striped">
+
+                    <thead class="font-weight-bold">
+                        <tr>
+                            <td>Select A Time</td>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (Time t in Model.Where(t => t.TimeDescription.Date.ToString("ddd") == "Fri"))
+                        {
+
+                            <tr>
+
+                                <td>
+                                    <form asp-controller="Home" asp-action="AddAppointment" method="get">
+                                        <button type="submit" class="btn @(t.SlotFilled == false ? "btn-primary" : "btn-secondary") btn-lg btn-block" @(t.SlotFilled == false ? "" : "disabled")>@t.TimeDescription.ToString("h:mm tt")</button>
+                                        <input type="hidden" name="timeId" value="@t.TimeID" />
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*SATURDAY APPOINTMENTS*@
+<div id="accordion">
+    <div class="card">
+        <div class="card-header" id="headingSix">
+            <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                    Saturday April 02, 2022
+                </button>
+            </h5>
+        </div>
+
+        <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+            <div class="card-body">
+                <table class="table table-bordered table-striped">
+
+                    <thead class="font-weight-bold">
+                        <tr>
+                            <td>Select A Time</td>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (Time t in Model.Where(t => t.TimeDescription.Date.ToString("ddd") == "Sat"))
+                        {
+
+                            <tr>
+
+                                <td>
+                                    <form asp-controller="Home" asp-action="AddAppointment" method="get">
+                                        <button type="submit" class="btn @(t.SlotFilled == false ? "btn-primary" : "btn-secondary") btn-lg btn-block" @(t.SlotFilled == false ? "" : "disabled")>@t.TimeDescription.ToString("h:mm tt")</button>
+                                        <input type="hidden" name="timeId" value="@t.TimeID" />
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*SUNDAY APPOINTMENTS*@
+<div id="accordion">
+    <div class="card">
+        <div class="card-header" id="headingSeven">
+            <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                    Sunday April 03, 2022
+                </button>
+            </h5>
+        </div>
+
+        <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
+            <div class="card-body">
+                <table class="table table-bordered table-striped">
+
+                    <thead class="font-weight-bold">
+                        <tr>
+                            <td>Select A Time</td>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (Time t in Model.Where(t => t.TimeDescription.Date.ToString("ddd") == "Sun"))
+                        {
+
+                            <tr>
+
+                                <td>
+                                    <form asp-controller="Home" asp-action="AddAppointment" method="get">
+                                        <button type="submit" class="btn @(t.SlotFilled == false ? "btn-primary" : "btn-secondary") btn-lg btn-block" @(t.SlotFilled == false ? "" : "disabled")>@t.TimeDescription.ToString("h:mm tt")</button>
                                         <input type="hidden" name="timeId" value="@t.TimeID" />
                                     </form>
                                 </td>
@@ -96,33 +316,8 @@
 
 
 
-@*</tbody>
-
-
-    </table>*@
 
 
 
-@*@for (int i = 8; i < 13; i++)
-    {
-        <form method="get" asp-action="test">
-            <input type="hidden" value="@i:00" name="time" />
-            <button type="submit" class="btn btn-primary btn-lg btn-block">@i:00 AM</button>
-        </form>
-        <br />
-    }
-
-    @for (int i = 1; i < 9; i++)
-    {
-        <form method="post" asp-action="AppointmentSelection">
-            <input type="hidden" value="@i:00" />
-            <button type="submit" class="btn btn-primary btn-lg btn-block">@i:00 PM</button>
-        </form>
-        <br />
-    }*@
 
 
-@*UPDATE IN THE CONTROLLER
-
-    on the post, it will receive a string. this string is the time.
-    in the controller, save this time as the appointment time in the database*@

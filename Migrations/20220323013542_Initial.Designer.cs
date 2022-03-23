@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LaytonTemple.Migrations
 {
     [DbContext(typeof(LaytonTempleContext))]
-    [Migration("20220322235048_Initial")]
+    [Migration("20220323013542_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -97,19 +97,19 @@ namespace LaytonTemple.Migrations
                         new
                         {
                             TimeID = 1,
-                            SlotFilled = false,
+                            SlotFilled = true,
                             TimeDescription = new DateTime(2022, 3, 28, 8, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             TimeID = 2,
-                            SlotFilled = false,
+                            SlotFilled = true,
                             TimeDescription = new DateTime(2022, 3, 28, 9, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             TimeID = 3,
-                            SlotFilled = false,
+                            SlotFilled = true,
                             TimeDescription = new DateTime(2022, 3, 28, 10, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new

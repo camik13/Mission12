@@ -25,9 +25,9 @@ namespace LaytonTemple.Models
         {
             mb.Entity<Time>().HasData(
                     // MONDAY 
-                    new Time { TimeID = 1, TimeDescription = new DateTime(2022, 03, 28, 8, 00, 0), SlotFilled = false },
-                    new Time { TimeID = 2, TimeDescription = new DateTime(2022, 03, 28, 9, 00, 0), SlotFilled = false },
-                    new Time { TimeID = 3, TimeDescription = new DateTime(2022, 03, 28, 10, 00, 0), SlotFilled = false },
+                    new Time { TimeID = 1, TimeDescription = new DateTime(2022, 03, 28, 8, 00, 0), SlotFilled = true },
+                    new Time { TimeID = 2, TimeDescription = new DateTime(2022, 03, 28, 9, 00, 0), SlotFilled = true },
+                    new Time { TimeID = 3, TimeDescription = new DateTime(2022, 03, 28, 10, 00, 0), SlotFilled = true },
                     new Time { TimeID = 4, TimeDescription = new DateTime(2022, 03, 28, 11, 00, 0), SlotFilled = false },
                     new Time { TimeID = 5, TimeDescription = new DateTime(2022, 03, 28, 12, 00, 0), SlotFilled = false },
                     new Time { TimeID = 6, TimeDescription = new DateTime(2022, 03, 28, 13, 00, 0), SlotFilled = false },

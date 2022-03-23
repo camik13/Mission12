@@ -42,14 +42,13 @@ namespace LaytonTemple.Controllers
         [HttpPost]
         public IActionResult AddAppointment(AppViewModel a, int timeID)
         {
-            //app.AppointmentTime = time;
-
+            
             if (ModelState.IsValid)
             {
                 Context.Times.Single(t => t.TimeID == timeID).SlotFilled = true; 
                 Context.Appointments.Add(a.app);
 
-                Context.SaveChanges();
+                Context.SaveChanges(); // error here
 
                 return View("Index"); 
             }
