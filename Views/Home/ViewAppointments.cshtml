@@ -4,7 +4,7 @@
 
 <!-- Make a table to display appoinments that have been made -->
 <!-- TODO: bring in a list of made appointments from the model-->
-@model List<Appointment> 
+@model List<Appointment>
 
 <table class="table table-bordered table-striped">
 
@@ -14,14 +14,14 @@
             <td>Group Size</td>
             <td>Email</td>
             <td>Phone</td>
-            <td>Appointment Time</td>
+            @*<td>Appointment Time</td>*@
         </tr>
     </thead>
 
     <tbody>
         <!-- For Loop creates the table based on number of records -->
         @foreach (var appointment in Model)
-         {
+        {
             <tr>
                 <td>@appointment.Name</td>
                 <td>@appointment.Size</td>
@@ -33,9 +33,9 @@
                 <td><a asp-controller="Home" asp-action="Delete" asp-route-appointmentid="@appointment.AppointmentID">Delete</a></td>
 
             </tr>
-         }
-        
-     </tbody>
+        }
+
+    </tbody>
 
 
-    </table>
+</table>

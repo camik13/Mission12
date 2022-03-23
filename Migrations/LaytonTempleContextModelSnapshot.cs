@@ -41,6 +41,8 @@ namespace LaytonTemple.Migrations
 
                     b.HasKey("AppointmentID");
 
+                    b.HasIndex("TimeID");
+
                     b.ToTable("Appointments");
 
                     b.HasData(
@@ -636,6 +638,15 @@ namespace LaytonTemple.Migrations
                             SlotFilled = true,
                             TimeDescription = new DateTime(2022, 4, 3, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         });
+                });
+
+            modelBuilder.Entity("LaytonTemple.Models.Appointment", b =>
+                {
+                    b.HasOne("LaytonTemple.Models.Time", "Time")
+                        .WithMany()
+                        .HasForeignKey("TimeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

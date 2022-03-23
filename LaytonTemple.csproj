@@ -31,5 +31,6 @@
   <ItemGroup>
     <Folder Include="wwwroot\img\" />
     <Folder Include="Models\ViewModels\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 </Project>

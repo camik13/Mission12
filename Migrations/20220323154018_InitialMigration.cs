@@ -3,10 +3,24 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LaytonTemple.Migrations
 {
-    public partial class Initial : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Times",
+                columns: table => new
+                {
+                    TimeID = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    TimeDescription = table.Column<DateTime>(nullable: true),
+                    SlotFilled = table.Column<bool>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Times", x => x.TimeID);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Appointments",
                 columns: table => new
@@ -16,41 +30,34 @@ namespace LaytonTemple.Migrations
                     Name = table.Column<string>(nullable: false),
                     Size = table.Column<int>(nullable: false),
                     Email = table.Column<string>(nullable: false),
-                    Phone = table.Column<string>(nullable: true)
+                    Phone = table.Column<string>(nullable: true),
+                    TimeID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Appointments", x => x.AppointmentID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Times",
-                columns: table => new
-                {
-                    TimeID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    TimeDescription = table.Column<DateTime>(nullable: false),
-                    SlotFilled = table.Column<bool>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Times", x => x.TimeID);
+                    table.ForeignKey(
+                        name: "FK_Appointments_Times_TimeID",
+                        column: x => x.TimeID,
+                        principalTable: "Times",
+                        principalColumn: "TimeID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
                 table: "Appointments",
-                columns: new[] { "AppointmentID", "Email", "Name", "Phone", "Size" },
-                values: new object[] { 1, "Johnson@johnson.com", "Johnson", "1231234567", 3 });
+                columns: new[] { "AppointmentID", "Email", "Name", "Phone", "Size", "TimeID" },
+                values: new object[] { 1, "Johnson@johnson.com", "Johnson", "1231234567", 3, 0 });
 
             migrationBuilder.InsertData(
                 table: "Appointments",
-                columns: new[] { "AppointmentID", "Email", "Name", "Phone", "Size" },
-                values: new object[] { 2, "Davidson@davidson.com", "Davidson", "9879876543", 4 });
+                columns: new[] { "AppointmentID", "Email", "Name", "Phone", "Size", "TimeID" },
+                values: new object[] { 2, "Davidson@davidson.com", "Davidson", "9879876543", 4, 0 });
 
             migrationBuilder.InsertData(
                 table: "Appointments",
-                columns: new[] { "AppointmentID", "Email", "Name", "Phone", "Size" },
-                values: new object[] { 3, "Jackson@jackson.com", "Jackson", "5555555555", 2 });
+                columns: new[] { "AppointmentID", "Email", "Name", "Phone", "Size", "TimeID" },
+                values: new object[] { 3, "Jackson@jackson.com", "Jackson", "5555555555", 2, 0 });
 
             migrationBuilder.InsertData(
                 table: "Times",
@@ -506,6 +513,11 @@ namespace LaytonTemple.Migrations
                 table: "Times",
                 columns: new[] { "TimeID", "SlotFilled", "TimeDescription" },
                 values: new object[] { 91, true, new DateTime(2022, 4, 3, 20, 0, 0, 0, DateTimeKind.Unspecified) });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Appointments_TimeID",
+                table: "Appointments",
+                column: "TimeID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
