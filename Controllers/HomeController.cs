@@ -1,6 +1,7 @@
 ﻿using LaytonTemple.Models;
 using LaytonTemple.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -29,33 +30,27 @@ namespace LaytonTemple.Controllers
         [HttpGet]
         public IActionResult AddAppointment(int timeId)
         {
-            //return View(app);
-            return View(new AppViewModel
-            {
-                time = Context.Times.Single(t => t.TimeID == timeId)
-            });
 
+            Appointment app = new Appointment
+            {
+                TimeID = timeId
+            };
+
+            ViewBag.TimeDescription = Context.Times.Single(x => x.TimeID == timeId).TimeDescription;
+
+            return View(app);
         }
 
 
         // ADD inputs to database from add appointment form 
         [HttpPost]
-        public IActionResult AddAppointment(AppViewModel a, int timeId)
+        public IActionResult AddAppointment(Appointment a)
         {
-            a.app.TimeID = timeId;
-            a.time.TimeID = timeId;
-            //a.app.Time = new Time { TimeID = timeId, TimeDescription = DateTime.Now, SlotFilled = false };
-
-            var errors = ModelState.Select(x => x.Value.Errors)
-                           .Where(y => y.Count > 0)
-                           .ToList();
-
             if (ModelState.IsValid)
             {
-                Context.Times.Single(t => t.TimeID == timeId).SlotFilled = true;
-                Context.Appointments.Add(a.app);
+                Context.Update(a);
 
-                Context.SaveChanges(); // error here
+                Context.SaveChanges();
 
                 return View("Index");
             }
@@ -86,24 +81,12 @@ namespace LaytonTemple.Controllers
         }
 
 
-        //[HttpGet]
-        //public IActionResult Test(int timeID) // I THINK THIS SHOULD BE AN INT
-        //{
-        //    //ViewBag.Time = timeID;
-        //    //ViewBag.Time = Context.Times
-        //    //    .Where(x => x.TimeID == timeID);
-
-        //    ViewBag.Time = Context.Times.Single(x => x.TimeID == timeID); 
-
-        //    //return View("AddAppointment", timeID);
-        //    return View("AddAppointment", timeID);
-        //}
-
-
         // Go to Edit Appointment Form 
         [HttpGet]
         public IActionResult Edit(int appointmentid)
         {
+            //var blah = Context.Appointments.Include("Times").Single(x => x.AppointmentID == appointmentid).Time.TimeDescription;
+
             // TO DO: return View Appointments
             var appt = Context.Appointments.Single(x => x.AppointmentID == appointmentid);
             return View("AddAppointment", appt); // Redirects user back to the form
@@ -123,7 +106,6 @@ namespace LaytonTemple.Controllers
             {
                 return View("ViewAppointments");
             }
-
         }
 
 

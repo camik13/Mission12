@@ -2,10 +2,10 @@
     ViewData["Title"] = "Add Appointment";
 }
 
-@model AppViewModel
+@model Appointment
 
 <div class="container">
-    <h2>Choose an Appointment Time</h2>
+    <h2>Please Fill in the Info Below</h2>
 </div>
 
 <form method="post">
@@ -13,36 +13,33 @@
     <div asp-validation-summary="All" class="text-danger"></div>
 
     <div class="form-group">
-        <label asp-for="@Model.app.Name">Name of Group</label>
-        <input asp-for="@Model.app.Name" class="form-control" />
+        <label asp-for="@Model.Name">Name of Group</label>
+        <input asp-for="@Model.Name" class="form-control" />
     </div>
 
     <div class="form-group">
-        <label asp-for="@Model.app.Size">Size of Group (1-15):</label>
-        <input asp-for="@Model.app.Size" class="form-control" />
+        <label asp-for="@Model.Size">Size of Group (1-15):</label>
+        <input asp-for="@Model.Size" class="form-control" />
     </div>
 
     <div class="form-group">
-        <label asp-for="@Model.app.Email">Email Address:</label>
-        <input asp-for="@Model.app.Email" class="form-control" />
+        <label asp-for="@Model.Email">Email Address:</label>
+        <input asp-for="@Model.Email" class="form-control" />
     </div>
 
     <div class="form-group">
-        <label asp-for="@Model.app.Phone">Phone Number (optional):</label>
-        <input asp-for="@Model.app.Phone" class="form-control" />
+        <label asp-for="@Model.Phone">Phone Number (optional):</label>
+        <input asp-for="@Model.Phone" class="form-control" />
     </div>
 
     <div class="form-group">
-        <label asp-for="@Model.time.TimeDescription">Appointment Time:</label>
-        @*<input type="text" asp-for="@Model.time.TimeDescription" readonly value="@Model.time.TimeDescription.ToString("h:mm tt")">*@
-        <input type="text" asp-for="@Model.time.TimeDescription">
+        <label>Appointment Time:</label>
+        <input readonly value="@ViewBag.TimeDescription">
     </div>
 
-    @*<input type="hidden" asp-for="@Model.app.Time" value="@Model.time.TimeDescription" />*@
-    <input type="hidden" asp-for="@Model.app.TimeID" name="timeID" value="@Model.time.TimeID" />
-    @*<input type="hidden" asp-for="@Model.app.Time" name="timeID" value="@Model.time" />*@
+    <input type="hidden" asp-for="@Model.TimeID" name="timeID" value="@Model.TimeID" />
 
-    <input type="hidden" asp-for="@Model.app.AppointmentID" />
+    <input type="hidden" asp-for="@Model.AppointmentID" />
 
     <br />
 

@@ -9,7 +9,7 @@ namespace LaytonTemple.Models
     public class Appointment
     {
         [Key]
-        [Required(ErrorMessage = "Enter a valid App ID")]
+        [Required]
         public int AppointmentID { get; set; }
 
         [Required(ErrorMessage = "Please Enter a Group Name")]
@@ -21,7 +21,6 @@ namespace LaytonTemple.Models
         [Required(ErrorMessage = "Please Enter an Email")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Enter a valid phone number")]
         public string Phone { get; set; }
 
 
